@@ -1,3 +1,3 @@
 [submodule "vendor/src/github.com/boltdb/bolt"]
 	path = vendor/src/github.com/boltdb/bolt
-	url = git@github.com:boltdb/bolt.git
+	url = git://github.com/boltdb/bolt.git
