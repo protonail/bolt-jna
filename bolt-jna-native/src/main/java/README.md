@@ -1,0 +1,1 @@
+# This is fake JAR to pass idiotic Sonatype Nexus validation

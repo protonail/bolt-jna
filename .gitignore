@@ -1,0 +1,12 @@
+# MAC OS Stuff
+.DS_Store
+
+# IDEA stuff
+.idea
+*.iml
+
+# Maven staff
+target/
+
+# GO staff
+vendor/pkg
