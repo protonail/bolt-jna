@@ -73,12 +73,9 @@ public static void main() {
 ## Create/Open LevelDB database
 
 ```java
-
 try(Bolt bolt = new Bolt(databaseFile, options)) {
     // Work with database here
 }
-
-
 ```
 
 or with options
@@ -89,7 +86,6 @@ try(BoltOptions options = new BoltOptions(5000 /* timeout in ms */)) {
         // Work with database here
     }
 }
-
 ```
 
 ## Create bucket
