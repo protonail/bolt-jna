@@ -6,7 +6,7 @@
 
   <groupId>com.protonail.bolt-jna</groupId>
   <artifactId>bolt-jna</artifactId>
-  <version>1.3.0-0</version>
+  <version>1.3.1-0</version>
 
   <url>https://github.com/protonail/bolt-jna</url>
   <description>Java JNA (not JNI) adapter for Bolt DB</description>
