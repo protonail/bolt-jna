@@ -58,6 +58,18 @@ If you want to use snapshot version (with `-SNAPSHOR` suffix) then just add snap
 </repositories>
 ```
 
+## Initialize Go runtime
+
+Go runtime should be initialized straight after Java application start. It it required to avoid
+"could not obtain pthread_keys" error.
+
+```java
+public static void main() {
+    Bolt.init() // Hack for fix error: could not obtain pthread_keys
+    ...
+}
+```
+
 ## Create/Open LevelDB database
 
 ```java
