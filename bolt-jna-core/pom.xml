@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.protonail.bolt-jna</groupId>
         <artifactId>bolt-jna</artifactId>
-        <version>1.3.1-0</version>
+        <version>1.3.1-1</version>
     </parent>
 
     <artifactId>bolt-jna-core</artifactId>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>com.protonail.bolt-jna</groupId>
             <artifactId>bolt-jna-native</artifactId>
-            <version>1.3.1-0</version>
+            <version>1.3.1-1</version>
             <classifier>${platform.classifier}</classifier>
             <scope>test</scope>
         </dependency>
