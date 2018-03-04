@@ -4,17 +4,14 @@ set -e
 
 export ROOT_HOME=$(cd `dirname "$0"` && cd .. && pwd)
 
+export GOROOT=${GOROOT:-}
+export GO=${GO:-go}
 export GOPATH=$ROOT_HOME/vendor
 
 export BOLT_HOME=$GOPATH/src/github.com/boltdb/bolt
 
-if [[ "$GOROOT" == "" ]]; then
-  GO=go
-else
-  GO=$GOROOT/bin/go
-
-  echo "Custom GOROOT: $GOROOT"
-fi
+echo "GOROOT: $GOROOT"
+echo "GO: $GO"
 
 if [[ "$1" == "clean" ]]; then
   echo --------------------
