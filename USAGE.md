@@ -60,8 +60,8 @@ If you want to use snapshot version (with `-SNAPSHOR` suffix) then just add snap
 
 ## Initialize Go runtime
 
-Go runtime should be initialized straight after Java application start. It it required to avoid
-"could not obtain pthread_keys" error.
+Go runtime should be initialized straight after Java application start. It it can help to avoid
+"could not obtain pthread_keys" error (details [here](https://github.com/golang/go/issues/17200)).
 
 ```java
 public static void main() {
