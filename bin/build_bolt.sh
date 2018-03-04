@@ -12,6 +12,8 @@ if [[ "$GOROOT" == "" ]]; then
   GO=go
 else
   GO=$GOROOT/bin/go
+
+  echo "Custom GOROOT: $GOROOT"
 fi
 
 if [[ "$1" == "clean" ]]; then
