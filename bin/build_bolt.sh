@@ -3,8 +3,16 @@
 set -e
 
 export ROOT_HOME=$(cd `dirname "$0"` && cd .. && pwd)
+
 export GOPATH=$ROOT_HOME/vendor
+
 export BOLT_HOME=$GOPATH/src/github.com/boltdb/bolt
+
+if [[ "$GOROOT" == "" ]]; then
+  GO=go
+else
+  GO=$GOROOT/bin/go
+fi
 
 if [[ "$1" == "clean" ]]; then
   echo --------------------
@@ -25,7 +33,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   BOLT_ARCH=darwin
   OUTPUT_LEVELDB_FILE=
 
-  go build -o pkg/protonail.com/bolt-jna/$BOLT_FILE -buildmode=c-shared protonail.com/bolt-jna
+  $GO build -o pkg/protonail.com/bolt-jna/$BOLT_FILE -buildmode=c-shared protonail.com/bolt-jna
 elif [[ "$OSTYPE" == "linux"* ]]; then
   BOLT_FILE=libbolt.so
   if [[ $(uname -m) == "x86_64" ]]; then
@@ -35,7 +43,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
   fi
   OUTPUT_LEVELDB_FILE=
 
-  go build -o pkg/protonail.com/bolt-jna/$BOLT_FILE -buildmode=c-shared protonail.com/bolt-jna
+  $GO build -o pkg/protonail.com/bolt-jna/$BOLT_FILE -buildmode=c-shared protonail.com/bolt-jna
 elif [[ "$OSTYPE" == "msys" ]]; then
   BOLT_FILE=bolt.dll
   if [[ "$MSYSTEM" == "MINGW64" ]]; then
@@ -48,7 +56,7 @@ elif [[ "$OSTYPE" == "msys" ]]; then
   PKG_DIR=$GOPATH/pkg/protonail.com/bolt-jna
   SRC_DIR=$GOPATH/src/protonail.com/bolt-jna
 
-  go build -o $PKG_DIR/bolt-jna.a -buildmode=c-archive protonail.com/bolt-jna
+  $GO build -o $PKG_DIR/bolt-jna.a -buildmode=c-archive protonail.com/bolt-jna
   gcc -shared -pthread -static-libgcc -o $PKG_DIR/$BOLT_FILE $ROOT_HOME/patches/WinDLL.c -I$PKG_DIR -I$SRC_DIR $PKG_DIR/bolt-jna.a -lWinMM -lntdll -lWS2_32
 fi
 
