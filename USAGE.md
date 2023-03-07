@@ -151,13 +151,13 @@ bolt.update(boltTransaction -> {
 ```java
 bolt.view(boltTransaction -> {
     try(BoltBucket bucket = boltTransaction.getBucket("my-bucket".getBytes())) { // 'my-bucket' must be exists
-        try(Cursor cursor = bucket.createCursor()) {
-            KeyValue currentKeyValue = cursor.first();
+        try(BoltCursor cursor = bucket.createCursor()) {
+            BoltKeyValue currentKeyValue = cursor.first();
             while (currentKeyValue != null) {
                 byte[] key = currentKeyValue.getKey();
                 byte[] value = currentKeyValue.getValue();
 
-                cursor.next();
+                currentKeyValue = cursor.next();
             }
         }
     }
